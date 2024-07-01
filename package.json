@@ -1,17 +1,41 @@
 {
-  "name": "apollo-server",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "nb-mock-api",
+  "main": "server.js",
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./src/server.js",
+    "start:dev": "nodemon -e js,graphql ./src/server.js",
+    "start:dev:preview": "MODE=preview nodemon -e js,graphql ./src/server.js",
+    "update-docs": "node updateDocs.js",
+    "update-docs:preview": "MODE=preview node updateDocs.js --preview",
+    "build": "npm run compile",
+    "compile": "webpack --config webpack.config.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "devDependencies": {
+    "graphql-markdown": "^6.0.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
+  },
   "dependencies": {
-    "apollo-server-express": "^3.13.0",
-    "express": "^4.19.2",
-    "graphql": "^16.9.0"
+    "@faker-js/faker": "^7.3.0",
+    "@graphql-tools/mock": "^8.7.19",
+    "@graphql-tools/schema": "^8.5.1",
+    "@graphql-tools/utils": "^8.9.0",
+    "@graphql-tools/wrap": "^8.5.1",
+    "apollo-server-core": "^3.12.0",
+    "apollo-server-express": "^3.12.0",
+    "express": "^4.18.1",
+    "graphql": "^16.5.0",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-ws": "^5.12.0",
+    "luxon": "^3.3.0",
+    "ws": "^8.13.0"
+  },
+  "overrides": {
+    "graphql-markdown": {
+      "graphql": "$graphql"
+    }
   }
 }
